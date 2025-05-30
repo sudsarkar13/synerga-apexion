@@ -16,13 +16,6 @@ import {
 	Lock,
 	Cloud,
 	Plug,
-	UserPlus,
-	FileBarChart,
-	ShieldCheck,
-	ChartPie,
-	Workflow,
-	FileSignature,
-	CheckCircle,
 	ChevronDown,
 	ChevronUp,
 } from "lucide-react";
