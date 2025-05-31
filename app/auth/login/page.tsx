@@ -1,7 +1,7 @@
 "use client";
 
 import LoginForm from "@/components/auth/LoginForm";
-import { ThemeToggle } from "@/components/themes/theme-toggle";
+import { DarkModeToggle } from "@/components/themes/DarkModeToggle";
 import Image from "next/image";
 
 export default function LoginPage() {
@@ -16,7 +16,7 @@ export default function LoginPage() {
           className="mb-4"
         />
         <div className="w-full flex justify-end">
-          <ThemeToggle />
+          <DarkModeToggle />
         </div>
       </div>
       <LoginForm />

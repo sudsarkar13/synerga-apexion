@@ -55,7 +55,7 @@ export async function verifyOTP(formData: FormData) {
     return { error: "Invalid OTP. Please try again." };
   }
 
-  const supabase = createClient();
+  const supabase = await createClient();
 
   // Update user's email_confirmed_at to confirm the account
   const { data: userData, error: updateError } = await supabase.auth.updateUser(

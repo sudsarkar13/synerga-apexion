@@ -1,7 +1,7 @@
 "use client";
 
 import RegisterForm from "@/components/auth/RegisterForm";
-import { ThemeToggle } from "@/components/themes/theme-toggle";
+import { DarkModeToggle } from "@/components/themes/DarkModeToggle";
 import Image from "next/image";
 
 export default function RegisterPage() {
@@ -16,7 +16,7 @@ export default function RegisterPage() {
           className="mb-4"
         />
         <div className="w-full flex justify-end">
-          <ThemeToggle />
+          <DarkModeToggle />
         </div>
       </div>
       <RegisterForm />
