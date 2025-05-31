@@ -3,15 +3,10 @@
 import { createClient } from "@/utils/supabase/server";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
-import nodemailer from "nodemailer";
+import { createTransporter } from "@/utils/email-config";
 
-const transporter = nodemailer.createTransport({
-	service: "gmail",
-	auth: {
-		user: process.env.GMAIL_USER,
-		pass: process.env.GMAIL_PASS,
-	},
-});
+// Create transporter using the email config
+const transporter = createTransporter();
 
 export async function generateOTP(): Promise<string> {
 	return Math.floor(100000 + Math.random() * 900000).toString();
@@ -25,10 +20,10 @@ export async function sendOTP(email: string) {
 	cookieStore.set("verificationOTP", otp, { maxAge: 600, path: "/" });
 	cookieStore.set("verificationEmail", email, { maxAge: 600, path: "/" });
 
-	// Send OTP via email
+	// Send OTP via configured email service
 	try {
 		await transporter.sendMail({
-			from: process.env.GMAIL_USER,
+			from: process.env.EMAIL_FROM || process.env.GMAIL_USER,
 			to: email,
 			subject: "Your OTP for Synerga Apexion",
 			text: `Your OTP is: ${otp}. It will expire in 10 minutes.`,
