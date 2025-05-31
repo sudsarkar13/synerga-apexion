@@ -29,7 +29,7 @@ export default function VerifyOTPPage() {
     try {
       otpSchema.parse({ otp });
       const formData = new FormData();
-      formData.append('otp', otp);
+      formData.append("otp", otp);
       const result = await verifyOTP(formData);
       if (result?.error) {
         setError(result.error);
@@ -49,7 +49,9 @@ export default function VerifyOTPPage() {
     <div className="flex items-center justify-center min-h-screen bg-gray-100 dark:bg-gray-900">
       <Card className="w-[350px] shadow-lg">
         <CardHeader>
-          <CardTitle className="text-2xl font-bold text-center">Verify Email</CardTitle>
+          <CardTitle className="text-2xl font-bold text-center">
+            Verify Email
+          </CardTitle>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
@@ -69,7 +71,9 @@ export default function VerifyOTPPage() {
               </Alert>
             )}
             <Button className="w-full" type="submit" disabled={isLoading}>
-              {isLoading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : null}
+              {isLoading ? (
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              ) : null}
               Verify OTP
             </Button>
           </form>

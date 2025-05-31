@@ -7,20 +7,28 @@ import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  CardFooter,
+} from "@/components/ui/card";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Loader2, Eye, EyeOff } from "lucide-react";
 import { signup } from "@/app/auth/actions";
 
-const registerSchema = z.object({
-  name: z.string().min(2, "Name must be at least 2 characters"),
-  email: z.string().email("Invalid email address"),
-  password: z.string().min(6, "Password must be at least 6 characters"),
-  confirmPassword: z.string()
-}).refine((data) => data.password === data.confirmPassword, {
-  message: "Passwords don't match",
-  path: ["confirmPassword"],
-});
+const registerSchema = z
+  .object({
+    name: z.string().min(2, "Name must be at least 2 characters"),
+    email: z.string().email("Invalid email address"),
+    password: z.string().min(6, "Password must be at least 6 characters"),
+    confirmPassword: z.string(),
+  })
+  .refine((data) => data.password === data.confirmPassword, {
+    message: "Passwords don't match",
+    path: ["confirmPassword"],
+  });
 
 export default function RegisterForm() {
   const [name, setName] = useState("");
@@ -41,9 +49,9 @@ export default function RegisterForm() {
     try {
       registerSchema.parse({ name, email, password, confirmPassword });
       const formData = new FormData();
-      formData.append('name', name);
-      formData.append('email', email);
-      formData.append('password', password);
+      formData.append("name", name);
+      formData.append("email", email);
+      formData.append("password", password);
       const result = await signup(formData);
       if (result?.error) {
         setError(result.error);
@@ -63,7 +71,9 @@ export default function RegisterForm() {
   return (
     <Card className="w-[350px] shadow-lg">
       <CardHeader>
-        <CardTitle className="text-2xl font-bold text-center">Register</CardTitle>
+        <CardTitle className="text-2xl font-bold text-center">
+          Register
+        </CardTitle>
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -142,7 +152,9 @@ export default function RegisterForm() {
             </Alert>
           )}
           <Button className="w-full" type="submit" disabled={isLoading}>
-            {isLoading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : null}
+            {isLoading ? (
+              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+            ) : null}
             Register
           </Button>
         </form>

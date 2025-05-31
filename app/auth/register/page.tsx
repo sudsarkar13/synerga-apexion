@@ -1,6 +1,6 @@
 "use client";
 
-import RegisterForm from '@/components/auth/RegisterForm'
+import RegisterForm from "@/components/auth/RegisterForm";
 import { ThemeToggle } from "@/components/themes/theme-toggle";
 import Image from "next/image";
 
@@ -21,5 +21,5 @@ export default function RegisterPage() {
       </div>
       <RegisterForm />
     </div>
-  )
+  );
 }

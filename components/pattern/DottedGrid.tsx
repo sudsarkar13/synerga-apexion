@@ -1,26 +1,26 @@
 import React from "react";
 
 interface DottedGridProps {
-	className?: string;
+  className?: string;
 }
 
 // Add this type declaration at the top of the file
 declare global {
-	interface Window {
-		CSS: {
-			paintWorklet: {
-				addModule(moduleURL: string): Promise<void>;
-			};
-		};
-	}
+  interface Window {
+    CSS: {
+      paintWorklet: {
+        addModule(moduleURL: string): Promise<void>;
+      };
+    };
+  }
 }
 
 export const DottedGrid: React.FC<DottedGridProps> = ({ className = "" }) => {
-	return (
-		<div className={`pointer-events-none ${className}`}>
-			<div className="absolute inset-0 w-full h-full bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoMCwgMCwgMCwgMC4zKSIvPjwvc3ZnPg==')] dark:bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoMjU1LCAyNTUsIDI1NSwgMC4yKSIvPjwvc3ZnPg==')] [mask-image:linear-gradient(to_bottom,white,transparent)]" />
-		</div>
-	);
+  return (
+    <div className={`pointer-events-none ${className}`}>
+      <div className="absolute inset-0 w-full h-full bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoMCwgMCwgMCwgMC4zKSIvPjwvc3ZnPg==')] dark:bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoMjU1LCAyNTUsIDI1NSwgMC4yKSIvPjwvc3ZnPg==')] [mask-image:linear-gradient(to_bottom,white,transparent)]" />
+    </div>
+  );
 };
 
 const gridStyles = `
@@ -59,12 +59,12 @@ const gridStyles = `
 `;
 
 if (typeof window !== "undefined") {
-	const style = document.createElement("style");
-	style.textContent = gridStyles;
-	document.head.appendChild(style);
+  const style = document.createElement("style");
+  style.textContent = gridStyles;
+  document.head.appendChild(style);
 
-	if ("paintWorklet" in window.CSS) {
-		window.CSS.paintWorklet.addModule(`
+  if ("paintWorklet" in window.CSS) {
+    window.CSS.paintWorklet.addModule(`
       registerPaint('dotted-background', class {
         static get inputProperties() {
           return ['--dot-color', '--dot-size', '--dot-space'];
@@ -87,5 +87,5 @@ if (typeof window !== "undefined") {
         }
       });
     `);
-	}
+  }
 }

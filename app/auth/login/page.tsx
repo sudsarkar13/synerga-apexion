@@ -1,6 +1,6 @@
 "use client";
 
-import LoginForm from '@/components/auth/LoginForm'
+import LoginForm from "@/components/auth/LoginForm";
 import { ThemeToggle } from "@/components/themes/theme-toggle";
 import Image from "next/image";
 
@@ -21,5 +21,5 @@ export default function LoginPage() {
       </div>
       <LoginForm />
     </div>
-  )
+  );
 }
