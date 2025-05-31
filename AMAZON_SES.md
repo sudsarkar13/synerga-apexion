@@ -57,11 +57,11 @@ const transporter = createTransporter();
 
 // Send email
 await transporter.sendMail({
-	from: process.env.AWS_SES_FROM_EMAIL,
-	to: "recipient@example.com",
-	subject: "Test Email",
-	text: "This is a test email",
-	html: "<p>This is a test email</p>",
+ from: process.env.AWS_SES_FROM_EMAIL,
+ to: "recipient@example.com",
+ subject: "Test Email",
+ text: "This is a test email",
+ html: "<p>This is a test email</p>",
 });
 ```
 
