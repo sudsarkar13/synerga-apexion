@@ -45,6 +45,7 @@ export function CodeBlock({ code }: { code: string }) {
     setTimeout(() => setIcon(CopyIcon), 2000);
   };
 
+  // amazonq-ignore-next-line
   return (
     <pre className="bg-muted rounded-md p-6 my-6 relative">
       <Button

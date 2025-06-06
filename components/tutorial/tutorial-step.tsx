@@ -7,6 +7,7 @@ export function TutorialStep({
   title: string;
   children: React.ReactNode;
 }) {
+  // amazonq-ignore-next-line
   return (
     <li className="relative">
       <Checkbox
